@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="/favicon.ico">
+<title>登录</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/themes/default/default.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<form style="width: 360px">
+			<div class="form-group">
+				<label for="username">帐 号</label> <input type="text" class="form-control" id="username" placeholder="请填写帐号">
+			</div>
+			<div class="form-group">
+				<label for="password">密 码</label> <input type="password" class="form-control" id="password" placeholder="请填写密码">
+			</div>
+			<div class="form-group">
+				<label for="captcha">验证码</label> <img alt="验证码" src="/sys/captcha.jpg"><input type="text" class="form-control" id="captcha" placeholder="">
+			</div>
+			<div class="checkbox">
+				<label> <input type="checkbox"> 记住登录
+				</label>
+			</div>
+			<div class="form-group">
+				<button type="button" class="btn" id="loginBtn">登录</button>
+			</div>
+		</form>
+	</div>
+</body>
+<script src="/plugins/jquery/jquery-1.11.3.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#loginBtn').on('click', function() {
+			$.ajax({
+				url : '/sys/login',
+				type : 'POST',
+				data : {
+					username : $('#username').val(),
+					password : $('#password').val(),
+					remenberMe : $('#remenberMe').is(':checked') ? '1' : '0'
+				}
+			}).done(function(data) {
+				if (data.success) {
+					window.location.href = "/";
+				} else {
+					alert(data.message);
+				}
+			});
+		});
+	});
+</script>
+</html>
