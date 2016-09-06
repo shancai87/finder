@@ -7,6 +7,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+
 @MappedSuperclass
 public abstract class BaseEntity extends AbstractEntity {
 
@@ -15,19 +20,23 @@ public abstract class BaseEntity extends AbstractEntity {
 	// 创建人
 	@JoinColumn
 	@ManyToOne
+	@CreatedBy
 	User createBy;
 
 	// 创建时间
 	@Column
+	@CreatedDate
 	Date createDate;
 
 	// 修改人
 	@JoinColumn
 	@ManyToOne
+	@LastModifiedBy
 	User updateBy;
 
 	// 修改时间
 	@Column
+	@LastModifiedDate
 	Date updateDate;
 
 	// 备注

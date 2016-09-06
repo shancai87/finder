@@ -64,10 +64,6 @@ public class User extends BaseEntity {
 	@Column(length = 18)
 	String phone;
 
-	// 手机
-	@Column(length = 18)
-	String mobile;
-
 	// 用户类型
 	@Column(length = 10)
 	String userType;
@@ -178,14 +174,6 @@ public class User extends BaseEntity {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
 	}
 
 	public String getUserType() {

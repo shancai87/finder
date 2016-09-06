@@ -1,59 +1,95 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>Login</title>
-
-<!-- Add to homescreen for Chrome on Android -->
-<meta name="mobile-web-app-capable" content="yes">
-<link rel="icon" sizes="192x192" href="images/android-desktop.png">
-
-<!-- Add to homescreen for Safari on iOS -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="Material Design Lite">
-<link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
-
-<!-- Tile icon for Win8 (144x144 + tile color) -->
-<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-<meta name="msapplication-TileColor" content="#3372DF">
-<link rel="shortcut icon" href="images/favicon.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="/plugins/mdl/material.min.css">
-<style>
-.content {
-	border-radius: 2px;
-	padding: 24px 50px;
-}
-</style>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Finder | 登录</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/plugins/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/plugins/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="/plugins/adminlte/css/AdminLTE.css">
+  <link rel="stylesheet" href="/plugins/iCheck/square/blue.css">
 </head>
-<body>
-	<div class="mdl-layout mdl-js-layout mdl-color--grey-100">
-		<div class="mdl-grid">
-			<div class="mdl-cell mdl-cell--4-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-			<div class="mdl-cell mdl-cell--4-col content mdl-color--white mdl-shadow--2dp mdl-color-text--grey-800 ">
-				<h5>Login</h5>
-				<form action="#">
-					<div class="mdl-textfield mdl-js-textfield">
-						<input name="username" class="mdl-textfield__input" type="text" id="username"> 
-						<label class="mdl-textfield__label" for="username">Username</label>
-					</div>
-					<div class="mdl-textfield mdl-js-textfield">
-						<input name="password" class="mdl-textfield__input" type="password" id="password"> 
-						<label class="mdl-textfield__label" for="password">Password</label>
-					</div>
-					<p class="mdl-textfield mdl-js-textfield"></p>
-					<div class="mdl-textfield mdl-js-textfield">
-						<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Login</button>
-					</div>
-				</form>
-			</div>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo"> <b>FINDER</b>  LTE </div>
+  <div class="login-box-body">
+    <p id="loginMsg" class="login-box-msg">用户登录</p>
+    <form role="form">
+      <div class="form-group has-feedback">
+        <input name="account" type="text" class="form-control" placeholder="账号">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input name="password" type="password" class="form-control" placeholder="密码">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input name="remenberMe" type="checkbox"> 记住登录
+            </label>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <button id="loginBtn" type="button" class="btn btn-primary btn-block btn-flat">登录</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="social-auth-links text-center">
+      <p>- 社交账号登录 -</p>
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+        Facebook</a>
+      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+        Google+</a>
+    </div>
+	<br/>
+	<div class="row">
+		<div class="col-xs-6">
+	   		<a href="#">忘记密码</a>
+	   	</div>
+		<div class="col-xs-6 text-right">
+			<a href="/register.html" class="text-center">用户注册</a>
 		</div>
 	</div>
-	<script src="/plugins/mdl/material.min.js"></script>
+  </div>
+</div>
+
+<script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/iCheck/icheck.min.js"></script>
+<script>
+  $(function () {
+	  
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' 
+    });
+    $('#loginBtn').on('click', function() {
+		$.ajax({
+			url 	: '/sys/login',
+			type : 'POST',
+			data : {
+				username : $('[name="account"]').val(),
+				password : $('[name="password"]').val(),
+				remenberMe : $('[name="remenberMe"]').is(':checked') ? '1' : '0'
+			}
+		}).done(function(data) {
+			if (data.success) {
+				window.location.href = "/";
+			} else {
+				$("#loginMsg").text(data.message);
+			}
+		});
+	});
+  });
+</script>
 </body>
 </html>

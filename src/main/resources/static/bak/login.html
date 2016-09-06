@@ -9,28 +9,35 @@
 <link rel="icon" href="/favicon.ico">
 <title>登录</title>
 <link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/themes/default/default.css" rel="stylesheet">
+<style type="text/css">.container { margin-top: 120px; }</style>
 </head>
 <body>
 	<div class="container">
-		<form style="width: 360px">
-			<div class="form-group">
-				<label for="username">帐 号</label> <input type="text" class="form-control" id="username" placeholder="请填写帐号">
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">登录</div>
+					<div class="panel-body">
+						<form>
+							<div class="form-group">
+								<label for="username">帐 号</label> <input type="text" class="form-control" id="username" placeholder="请填写帐号">
+							</div>
+							<div class="form-group">
+								<label for="password">密 码</label> <input type="password" class="form-control" id="password" placeholder="请填写密码">
+							</div>
+							<div class="checkbox">
+								<label> <input type="checkbox"> 记住登录
+								</label>
+							</div>
+							<div class="form-group">
+								<button type="button" class="btn btn-primary form-control" id="loginBtn">登录</button>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
-			<div class="form-group">
-				<label for="password">密 码</label> <input type="password" class="form-control" id="password" placeholder="请填写密码">
-			</div>
-			<div class="form-group">
-				<label for="captcha">验证码</label> <img alt="验证码" src="/sys/captcha.jpg"><input type="text" class="form-control" id="captcha" placeholder="">
-			</div>
-			<div class="checkbox">
-				<label> <input type="checkbox"> 记住登录
-				</label>
-			</div>
-			<div class="form-group">
-				<button type="button" class="btn" id="loginBtn">登录</button>
-			</div>
-		</form>
+		</div>
 	</div>
 </body>
 <script src="/plugins/jquery/jquery-1.11.3.min.js"></script>

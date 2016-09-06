@@ -56,8 +56,8 @@ public class ShiroConfig {
 		shiroFilter.setUnauthorizedUrl("/error/403.html");
 		Map<String, String> filterChains = new HashMap<>();
 		filterChains.put("/sys/login", "anon");
-		filterChains.put("/sys/captcha.jpg", "anon");
 		filterChains.put("/login.html", "anon");
+		filterChains.put("/register.html", "anon");
 		filterChains.put("/plugins/**", "anon");
 		filterChains.put("/themes/**", "anon");
 		filterChains.put("/pages/**", "anon");

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
 	<Properties>
-		<Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} %5p --- [%t] %c : %m%n</Property>
+		<Property name="LOG_PATTERN">[%5p] %d{HH:mm:ss.SSS} - [%t] %c : %m%n</Property>
 		<Property name="LOG_FILE">logs/error.log</Property>
 	</Properties>
 	<Appenders>
@@ -23,11 +23,12 @@
 		<logger name="com.zaxxer" level="warn" />
 		<logger name="net.sf.ehcache" level="info" />
 		<logger name="org.hibernate" level="info" />
-		<logger name="org.hibernate.SQL" level="debug" />
+		<logger name="org.hibernate.SQL" level="info" />
 		<logger name="java.sql.ResultSet" level="trace" />
-		<Logger name="org.apache.coyote.http11.Http11NioProtocol" level="warn" />
-		<Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn" />
-		<Logger name="org.apache.catalina.startup.DigesterFactory" level="error" />
+		<logger name="org.apache.commons.beanutils" level="warn"/>
+		<logger name="org.apache.coyote.http11.Http11NioProtocol" level="warn" />
+		<logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn" />
+		<logger name="org.apache.catalina.startup.DigesterFactory" level="error" />
 
 		<Root level="DEBUG">
 			<AppenderRef ref="console" />
